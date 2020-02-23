@@ -239,6 +239,12 @@ class My_Basic_Plugin
 
 		// Action for 5 post per page
 		add_action('pre_get_posts', array($this, 'my_plugin_post_per_page'));
+
+		add_action('get_sidebar', array($this, 'get_all_tag'));
+
+		add_action('pre_get_posts', array($this, 'print_all_tag_post'));
+
+		//add_action('wp_meta', array($this, 'your_function'));
 	}
 
 	// Testing Filter is working or not
@@ -254,7 +260,7 @@ class My_Basic_Plugin
 		// If you didn't see the output, then inspect element. Now you must see.
 		var_dump('ok');
 	}
-	
+
 	/**
 	 * Set 5 Post per page
 	 */
@@ -263,5 +269,35 @@ class My_Basic_Plugin
 		if ($query->is_home() && $query->is_main_query()) {
 			$query->set('posts_per_page', 5);
 		}
+	}
+
+	public function get_all_tag()
+	{
+		$tags = get_tags(array(
+			'hide_empty' => false
+		));
+		//var_dump($tags);
+		//echo "<!-- DEBUG\n" . print_r($tags, true) . "\n-->";
+		echo '<ul>';
+		foreach ($tags as $tag) {
+			echo '<a href="http://localhost/wordpress/index.php/tag/' . $tag->name . '/" onclick="clickme();"><li>' . $tag->name . '</li></a>';
+		}
+		echo '</ul>';
+
+		echo '<script>
+				function clickme(){
+					alert("ok");
+				} 
+			</script>';
+	}
+
+	public function print_all_tag_post($query)
+	{
+
+		if ($query->is_tag('favourite')) {
+			$query->set('posts_per_page', 5);
+			return;
+		}
+
 	}
 }
