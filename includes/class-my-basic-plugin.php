@@ -238,13 +238,22 @@ class My_Basic_Plugin
 		//add_action('init', array($this, 'add_some_text'));
 
 		// Action for 5 post per page
-		add_action('pre_get_posts', array($this, 'my_plugin_post_per_page'));
+		//add_action('pre_get_posts', array($this, 'my_plugin_post_per_page'));
 
 		add_action('get_sidebar', array($this, 'get_all_tag'));
 
+		//add_action('pre_get_posts', array($this, 'perticuler_tagged_posts'));
 		add_action('pre_get_posts', array($this, 'print_all_tag_post'));
 
 		//add_action('wp_meta', array($this, 'your_function'));
+
+		add_action('pre_get_posts', array($this, 'test'));
+	}
+
+	public function test($query){
+		if($query->is_tag()){
+			var_dump('tagged post');
+		}
 	}
 
 	// Testing Filter is working or not
@@ -291,13 +300,36 @@ class My_Basic_Plugin
 			</script>';
 	}
 
+	/**
+	 * get particuler tagged post
+	 */
+	// function perticuler_tagged_posts($query)
+	// {
+	// 	if ($query->is_tag('favourite')) {
+	// 		$query->set('posts_per_page', 5);
+	// 		return;
+	// 	}
+	// }
+
+	/**
+	 * get all tagged post
+	 */
 	public function print_all_tag_post($query)
 	{
+		$tags = get_tags(array(
+			'hide_empty' => false
+		));
 
-		if ($query->is_tag('favourite')) {
-			$query->set('posts_per_page', 5);
-			return;
+		$tagArray = [];
+
+		foreach ($tags as $tag) {
+			array_push($tagArray, $tag->name);
+
+
+			//echo "<!-- DEBUG\n" . print_r($tagArray, true) . "\n-->";
+			if ($query->is_tag($tag->name)) {
+				$query->set('posts_per_page', 5);
+			}
 		}
-
 	}
 }
