@@ -73,7 +73,7 @@ class My_Basic_Plugin_Public {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->my_basic_plugin, plugin_dir_url( __FILE__ ) . 'css/my_basic_plugin-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->my_basic_plugin, plugin_dir_url( __FILE__ ) . 'css/my-basic-plugin-public.css', array(), $this->version, 'all' );
 
 	}
 
@@ -96,7 +96,7 @@ class My_Basic_Plugin_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->my_basic_plugin, plugin_dir_url( __FILE__ ) . 'js/my_basic_plugin-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->my_basic_plugin, plugin_dir_url( __FILE__ ) . 'js/my-basic-plugin-public.js', array( 'jquery' ), $this->version, false );
 
 	}
 

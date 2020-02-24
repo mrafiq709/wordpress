@@ -229,13 +229,11 @@ class My_Basic_Plugin
 	// invocation of filter functions
 	public function call_filters()
 	{
-		add_filter('the_content', array($this, 'add_some_text_to_content'));
 	}
 
 	// invocation of filter functions
 	public function call_actions()
 	{
-		//add_action('init', array($this, 'add_some_text'));
 
 		// Action for 5 post per page
 		//add_action('pre_get_posts', array($this, 'my_plugin_post_per_page'));
@@ -247,27 +245,8 @@ class My_Basic_Plugin
 
 		//add_action('wp_meta', array($this, 'your_function'));
 
-		add_action('pre_get_posts', array($this, 'test'));
-	}
 
-	public function test($query){
-		if($query->is_tag()){
-			var_dump('tagged post');
-		}
-	}
-
-	// Testing Filter is working or not
-	public function add_some_text_to_content($content)
-	{
-		$text = 'I am added to the content';
-		return $content . $text;
-	}
-
-	// Tesing Action is working or not
-	public function add_some_text()
-	{
-		// If you didn't see the output, then inspect element. Now you must see.
-		var_dump('ok');
+		add_action('the_content', array($this, 'custom_template'));
 	}
 
 	/**
@@ -325,5 +304,34 @@ class My_Basic_Plugin
 				$query->set('posts_per_page', 5);
 			}
 		}
+	}
+
+	public function custom_template()
+	{
+?>
+		</pre>
+		<form id="radioform">
+			<table>
+				<tbody>
+					<tr>
+						<td><input class="pref" checked="checked" name="book" type="radio" value="Sycamore Row" />Sycamore Row</td>
+						<td>John Grisham</td>
+					</tr>
+					<tr>
+						<td><input class="pref" name="book" type="radio" value="Dark Witch" />Dark Witch</td>
+						<td>Nora Roberts</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+		<pre>
+
+		<script>
+			$(".pref").change(function(){
+				alert('changed');
+			});
+		</script>
+<?php
+
 	}
 }
