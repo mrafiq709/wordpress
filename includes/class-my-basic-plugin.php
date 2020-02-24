@@ -289,15 +289,9 @@ class My_Basic_Plugin
 		//echo "<!-- DEBUG\n" . print_r($tags, true) . "\n-->";
 		echo '<ul>';
 		foreach ($tags as $tag) {
-			echo '<a href="http://localhost/wordpress/index.php/tag/' . $tag->name . '/" onclick="clickme();"><li>' . $tag->name . '</li></a>';
+			echo '<a href="http://localhost/wordpress/index.php/tag/' . $tag->name . '/"><li>' . $tag->name . '</li></a>';
 		}
 		echo '</ul>';
-
-		echo '<script>
-				function clickme(){
-					alert("ok");
-				} 
-			</script>';
 	}
 
 	/**
