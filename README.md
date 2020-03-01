@@ -1,0 +1,5 @@
+# wordpress
+CRUD Operation, Mysql Table Create
+
+##### Reference
+https://www.davidangulo.xyz/how-to-create-crud-operations-plugin-in-wordpress/?__cf_chl_jschl_tk__=d71fd43e0e8f74064638664f335792d2671c67d3-1583077628-0-AVb8BHUK9a-PwWbvQaNjK7Gka-fzquV84T_HxgpC9QWLwMrMbmNALEe3uzLz5CkxifXSOJvvPtdmeKmtEPrYUVSgwPDk5qoDQvAftjrapHuI-56pBUj-nD5EtwdEjXZqw8XbT5fzEZNU_mSEmXl6k3IbccX7DDAU_Gh0oMc8ls9Nl5AIztyYX0l42KmRZNrwgmtpN7sTeUsqmh-akBFzhuY8vhdCKw5uVP0A6AhYonYX5q_WHE2L1HTEcZWKkrmhf02DmGj9UzLV4XMce2BM_l3n-Nhucs21ubp6tpS5WasKNazvj7KdaLDIGO-2jftNWyp8JIlqHYpuRDV10120y0Y
